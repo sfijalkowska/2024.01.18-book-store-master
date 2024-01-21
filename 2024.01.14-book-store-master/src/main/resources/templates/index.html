@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Book Store</title>
+    <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="/book.css">
+</head>
+<body>
+<div id="logo">
+    <img src="/logo.png">
+</div>
+<div id="menu">
+    <a href="/main" class="button">Strona Główna</a>
+    <a href="/contact" class="button">Kontakt</a>
+    <a href="/login" class="button" th:if="${session.user == null}">Zaloguj</a>
+    <a href="/logout" class="button" th:if="${session.user != null}">Wyloguj</a>
+</div>
+<div id="content">
+    <form action="/filter" method="get">
+        <input type="text" placeholder="Szukaj" class="input-field"
+               name="pattern" style="display: inline-block;" th:value="${session.filter}">
+        <input type="submit" value="OK" class="button">
+    </form>
+    <div class="book" th:each="book : ${books}">
+        <div th:text="${book.title}" class="title"></div>
+        <div th:text="${book.author}" class="author"></div>
+        <div th:text="${'Cena: ' + book.price + ' zł'}" class="price"></div>
+        <div th:text="${'ISBN: ' + book.isbn}" class="isbn"></div>
+        <div th:text="${'Ilość: ' + book.quantity}" class="quantity"></div>
+    </div>
+</div>
+</body>
+</html>

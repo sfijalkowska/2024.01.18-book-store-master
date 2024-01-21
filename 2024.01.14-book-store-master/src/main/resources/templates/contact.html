@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Book Store</title>
+    <link rel="stylesheet" href="/commons.css">
+</head>
+<body>
+<div id="logo">
+    <img src="/logo.png">
+</div>
+<div id="menu">
+    <a href="/main" class="button">Strona Główna</a>
+    <a href="/contact" class="button">Kontakt</a>
+    <a href="/login" class="button" th:if="${session.user == null}">Zaloguj</a>
+    <a href="/logout" class="button" th:if="${session.user != null}">Wyloguj</a>
+</div>
+<div id="content">
+    <p>Super Book Store</p>
+    <p>ul. Jakas 55</p>
+    <p>31-123 Krakow</p>
+    <p>tel. 123 123 123</p>
+    <p>fax: 12 123 123 123</p>
+</div>
+</body>
+</html>
